@@ -18,18 +18,15 @@ export default function SignupPage() {
   const handleEnter = (e: React.FormEvent) => {
     e.preventDefault();
     if (!isButtonDisabled) {
-      // Salva o usuário no estado global do Redux
       dispatch(setUsername(inputValue.trim()));
-      // Opcional/Bônus: Salvar no localStorage para manter a sessão ao atualizar a página
       localStorage.setItem("@codeleap:username", inputValue.trim());
-      // Redireciona para a tela do Feed (que criaremos a seguir)
       router.push("/feed");
     }
   };
 
   return (
     <main className="min-h-screen bg-[#DDDDDD] flex items-center justify-center p-4">
-      <Card className="w-full max-w-[500px] rounded-2xl border-0 shadow-lg p-2">
+      <Card className="w-full max-w-125 rounded-2xl border-0 shadow-lg p-2">
         <CardHeader>
           <CardTitle className="text-[22px] font-bold text-black">
             Welcome to CodeLeap network!
@@ -57,7 +54,7 @@ export default function SignupPage() {
               <Button
                 type="submit"
                 disabled={isButtonDisabled}
-                className="bg-[#7695EC] hover:bg-[#7695EC]/90 text-white font-bold rounded-lg px-8 min-w-[111px]"
+                className="bg-[#7695EC] hover:bg-[#7695EC]/90 text-white font-bold rounded-lg px-8 min-w-27.75"
               >
                 ENTER
               </Button>
