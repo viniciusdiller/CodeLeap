@@ -20,7 +20,7 @@ export default function FeedPage() {
 
   return (
     <main className="min-h-screen bg-[#DDDDDD] flex justify-center">
-      <div className="w-full max-w-[800px] bg-white min-h-screen shadow-lg flex flex-col">
+      <div className="w-full max-w-200px bg-white min-h-screen shadow-lg flex flex-col">
         <header className="bg-[#7695EC] text-white px-9 py-7">
           <h1 className="text-[22px] font-bold">CodeLeap Network</h1>
         </header>

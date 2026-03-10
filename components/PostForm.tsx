@@ -7,9 +7,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { api } from "@/lib/api";
 
 interface PostFormProps {
-  onSuccess?: () => void; // Função que chamaremos para avisar o Feed que um post foi criado
+  onSuccess?: () => void;
 }
 
 export function PostForm({ onSuccess }: PostFormProps) {
@@ -17,10 +18,8 @@ export function PostForm({ onSuccess }: PostFormProps) {
   const [content, setContent] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  // Pegamos o usuário logado para enviar na API
   const username = useSelector((state: RootState) => state.user.username);
 
-  // Regra de negócio: Desativa se title OU content estiverem vazios (ou só com espaços)
   const isButtonDisabled =
     title.trim() === "" || content.trim() === "" || isLoading;
 
@@ -31,28 +30,15 @@ export function PostForm({ onSuccess }: PostFormProps) {
     setIsLoading(true);
 
     try {
-      // Fazendo a requisição POST para a API do CodeLeap
-      const response = await fetch("https://dev.codeleap.co.uk/careers/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username: username,
-          title: title.trim(),
-          content: content.trim(),
-        }),
+      await api.createPost({
+        username: username,
+        title: title.trim(),
+        content: content.trim(),
       });
 
-      if (response.ok) {
-        // Limpa o formulário após o sucesso
-        setTitle("");
-        setContent("");
-        // Avisa a página mãe (Feed) que precisa buscar os posts novamente
-        if (onSuccess) onSuccess();
-      } else {
-        console.error("Failed to create post");
-      }
+      setTitle("");
+      setContent("");
+      if (onSuccess) onSuccess();
     } catch (error) {
       console.error("Error creating post:", error);
     } finally {
@@ -91,7 +77,7 @@ export function PostForm({ onSuccess }: PostFormProps) {
               placeholder="Content here"
               value={content}
               onChange={(e) => setContent(e.target.value)}
-              className="rounded-lg border-[#777777] focus-visible:ring-1 focus-visible:ring-black min-h-[80px] resize-y"
+              className="rounded-lg border-[#777777] focus-visible:ring-1 focus-visible:ring-black min-h-20 resize-y"
             />
           </div>
 
@@ -99,7 +85,7 @@ export function PostForm({ onSuccess }: PostFormProps) {
             <Button
               type="submit"
               disabled={isButtonDisabled}
-              className="bg-[#7695EC] hover:bg-[#7695EC]/90 text-white font-bold rounded-lg px-8 min-w-[120px] disabled:bg-[#DDDDDD] disabled:text-black disabled:opacity-100"
+              className="bg-[#7695EC] hover:bg-[#7695EC]/90 text-white font-bold rounded-lg px-8 min-w-30 disabled:bg-[#DDDDDD] disabled:text-black disabled:opacity-100"
             >
               {isLoading ? "Creating..." : "Create"}
             </Button>
