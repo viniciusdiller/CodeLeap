@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import { Loader2 } from "lucide-react";
 import { RootState } from "@/store/store";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -85,9 +86,17 @@ export function PostForm({ onSuccess }: PostFormProps) {
             <Button
               type="submit"
               disabled={isButtonDisabled}
-              className="bg-[#7695EC] hover:bg-[#7695EC]/90 text-white font-bold rounded-lg px-8 min-w-30 disabled:bg-[#DDDDDD] disabled:text-black disabled:opacity-100"
+              className="bg-[#7695EC] text-white font-bold rounded-lg px-8 min-w-30 
+                         transition-all duration-200 ease-in-out cursor-pointer
+                         hover:bg-[#7695EC]/90 hover:scale-[1.03] active:scale-95
+                         disabled:bg-[#DDDDDD] disabled:text-black disabled:opacity-100 
+                         disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:bg-[#DDDDDD]"
             >
-              {isLoading ? "Creating..." : "Create"}
+              {isLoading ? (
+                <Loader2 className="animate-spin" size={20} />
+              ) : (
+                "Create"
+              )}
             </Button>
           </div>
         </form>
