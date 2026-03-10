@@ -11,8 +11,8 @@ import { DeletePostModal } from "@/components/DeletePostModal";
 import { EditPostModal } from "@/components/EditPostModal";
 import { api } from "@/lib/api";
 import { Post } from "@/types";
-import { LogOut, Loader2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { LogOut } from "lucide-react";
+import { PostSkeleton } from "@/components/PostSkeleton";
 
 export default function FeedPage() {
   const router = useRouter();
@@ -112,8 +112,10 @@ export default function FeedPage() {
           <PostForm onSuccess={fetchInitialPosts} />
 
           {isLoading ? (
-            <div className="flex justify-center items-center py-10">
-              <Loader2 className="animate-spin text-[#7695EC]" size={48} />
+            <div className="flex flex-col gap-6">
+              {[1, 2, 3].map((index) => (
+                <PostSkeleton key={index} />
+              ))}
             </div>
           ) : (
             <div className="flex flex-col gap-6 pb-10">

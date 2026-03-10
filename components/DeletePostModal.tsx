@@ -42,13 +42,12 @@ export function DeletePostModal({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-100 rounded-2xl p-6">
+      <DialogContent className="sm:max-w-165 w-[95vw] rounded-2xl p-8 gap-6 md:p-10 flex flex-col justify-center min-h-62.2">
         <DialogHeader>
           <DialogTitle className="text-[22px] font-bold text-black mb-6">
             Are you sure you want to delete this item?
           </DialogTitle>
         </DialogHeader>
-
         <div className="flex justify-end gap-4 mt-4">
           <Button
             variant="outline"
