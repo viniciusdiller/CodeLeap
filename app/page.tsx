@@ -26,7 +26,7 @@ export default function SignupPage() {
 
   return (
     <main className="min-h-screen bg-[#DDDDDD] flex items-center justify-center p-4">
-      <Card className="w-full max-w-[500px] rounded-2xl border-0 shadow-lg p-2">
+      <Card className="w-full max-w-125 rounded-2xl border-0 shadow-lg p-2">
         <CardHeader>
           <CardTitle className="text-[22px] font-bold text-black">
             Welcome to CodeLeap network!
@@ -54,7 +54,7 @@ export default function SignupPage() {
               <Button
                 type="submit"
                 disabled={isButtonDisabled}
-                className="bg-[#7695EC] hover:bg-[#7695EC]/90 text-white font-bold rounded-lg px-8 min-w-[111px]"
+                className="bg-[#7695EC] hover:bg-[#7695EC]/90 text-white font-bold rounded-lg px-8 min-w-27.75"
               >
                 ENTER
               </Button>

@@ -22,4 +22,22 @@ export const api = {
     if (!response.ok) throw new Error("Failed to fetch posts");
     return response.json();
   },
+
+  deletePost: async (id: number) => {
+    const response = await fetch(`${API_URL}/careers/${id}/`, {
+      method: "DELETE",
+    });
+    if (!response.ok) throw new Error("Failed to delete post");
+    return true;
+  },
+
+  updatePost: async (id: number, data: { title: string; content: string }) => {
+    const response = await fetch(`${API_URL}/careers/${id}/`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+    if (!response.ok) throw new Error("Failed to update post");
+    return response.json();
+  },
 };

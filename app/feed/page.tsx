@@ -6,6 +6,8 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 import { PostForm } from "@/components/PostForm";
 import { PostCard } from "@/components/PostCard";
+import { DeletePostModal } from "@/components/DeletePostModal";
+import { EditPostModal } from "@/components/EditPostModal";
 import { api } from "@/lib/api";
 import { Post } from "@/types";
 
@@ -15,6 +17,12 @@ export default function FeedPage() {
 
   const [posts, setPosts] = useState<Post[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [postToDelete, setPostToDelete] = useState<number | null>(null);
+
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [postToEdit, setPostToEdit] = useState<Post | null>(null);
 
   const fetchPosts = useCallback(async () => {
     try {
@@ -36,11 +44,21 @@ export default function FeedPage() {
     }
   }, [username, router, fetchPosts]);
 
+  const handleDeleteClick = (id: number) => {
+    setPostToDelete(id);
+    setIsDeleteModalOpen(true);
+  };
+
+  const handleEditClick = (post: Post) => {
+    setPostToEdit(post);
+    setIsEditModalOpen(true);
+  };
+
   if (!username) return null;
 
   return (
     <main className="min-h-screen bg-[#DDDDDD] flex justify-center">
-      <div className="w-full max-w-200 bg-white min-h-screen shadow-lg flex flex-col">
+      <div className="w-full max-w-200 bg-white min-h-screen shadow-lg flex flex-col relative">
         <header className="bg-[#7695EC] text-white px-9 py-7">
           <h1 className="text-[22px] font-bold">CodeLeap Network</h1>
         </header>
@@ -58,15 +76,27 @@ export default function FeedPage() {
                 <PostCard
                   key={post.id}
                   post={post}
-                  onDeleteClick={(id) => console.log("Delete click", id)}
-                  onEditClick={(postData) =>
-                    console.log("Edit click", postData)
-                  }
+                  onDeleteClick={handleDeleteClick}
+                  onEditClick={handleEditClick}
                 />
               ))}
             </div>
           )}
         </div>
+
+        <DeletePostModal
+          isOpen={isDeleteModalOpen}
+          onClose={() => setIsDeleteModalOpen(false)}
+          postId={postToDelete}
+          onSuccess={fetchPosts}
+        />
+
+        <EditPostModal
+          isOpen={isEditModalOpen}
+          onClose={() => setIsEditModalOpen(false)}
+          post={postToEdit}
+          onSuccess={fetchPosts}
+        />
       </div>
     </main>
   );
