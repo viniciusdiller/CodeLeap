@@ -12,6 +12,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { toast } from "sonner";
 
 interface EditPostModalProps {
   isOpen: boolean;
@@ -51,8 +52,10 @@ export function EditPostModal({
       });
       onSuccess();
       onClose();
+      toast.success("Post updated successfully!");
     } catch (error) {
       console.error("Error updating post:", error);
+      toast.error("Failed to update post.");
     } finally {
       setIsLoading(false);
     }

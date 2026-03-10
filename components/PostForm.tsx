@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { api } from "@/lib/api";
+import { toast } from "sonner";
 
 interface PostFormProps {
   onSuccess?: () => void;
@@ -40,8 +41,10 @@ export function PostForm({ onSuccess }: PostFormProps) {
       setTitle("");
       setContent("");
       if (onSuccess) onSuccess();
+      toast.success("Post created successfully!");
     } catch (error) {
       console.error("Error creating post:", error);
+      toast.error("Failed to create post.");
     } finally {
       setIsLoading(false);
     }

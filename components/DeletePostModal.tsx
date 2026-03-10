@@ -9,6 +9,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { toast } from "sonner";
 
 interface DeletePostModalProps {
   isOpen: boolean;
@@ -33,8 +34,10 @@ export function DeletePostModal({
       await api.deletePost(postId);
       onSuccess();
       onClose();
+      toast.success("Post deleted successfully!");
     } catch (error) {
       console.error("Error deleting post:", error);
+      toast.error("Failed to delete post.");
     } finally {
       setIsLoading(false);
     }
