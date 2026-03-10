@@ -24,7 +24,7 @@ export function PostCard({ post, onDeleteClick, onEditClick }: PostCardProps) {
   });
 
   return (
-    <div className="w-full flex flex-col border border-[#999999] rounded-xl overflow-hidden shadow-none">
+    <div className="w-full flex flex-col border border-[#999999] rounded-xl overflow-hidden shadow-none transition-all duration-300 hover:shadow-lg hover:border-[#7695EC]/50">
       <div className="bg-[#7695EC] p-6 flex items-center justify-between">
         <h2 className="text-[22px] font-bold text-white truncate pr-4">
           {post.title}
@@ -47,7 +47,6 @@ export function PostCard({ post, onDeleteClick, onEditClick }: PostCardProps) {
           </div>
         )}
       </div>
-
       <div className="p-6 bg-white flex flex-col gap-4">
         <div className="flex justify-between items-center text-[#777777] text-lg font-bold">
           <span>@{post.username}</span>

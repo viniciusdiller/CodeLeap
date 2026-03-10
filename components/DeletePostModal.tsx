@@ -14,7 +14,7 @@ interface DeletePostModalProps {
   isOpen: boolean;
   onClose: () => void;
   postId: number | null;
-  onSuccess: () => void; // Para recarregar a lista
+  onSuccess: () => void;
 }
 
 export function DeletePostModal({
@@ -31,8 +31,8 @@ export function DeletePostModal({
     setIsLoading(true);
     try {
       await api.deletePost(postId);
-      onSuccess(); // Recarrega os posts
-      onClose(); // Fecha o modal
+      onSuccess();
+      onClose();
     } catch (error) {
       console.error("Error deleting post:", error);
     } finally {

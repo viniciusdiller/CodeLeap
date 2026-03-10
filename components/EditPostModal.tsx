@@ -30,7 +30,6 @@ export function EditPostModal({
   const [content, setContent] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  // Quando o modal abre, preenchemos os campos com os dados do post selecionado
   useEffect(() => {
     if (post) {
       setTitle(post.title);
