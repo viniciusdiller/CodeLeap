@@ -18,11 +18,8 @@ export default function SignupPage() {
   const handleEnter = (e: React.FormEvent) => {
     e.preventDefault();
     if (!isButtonDisabled) {
-      // Salva o usuário no estado global do Redux
       dispatch(setUsername(inputValue.trim()));
-      // Opcional/Bônus: Salvar no localStorage para manter a sessão ao atualizar a página
       localStorage.setItem("@codeleap:username", inputValue.trim());
-      // Redireciona para a tela do Feed (que criaremos a seguir)
       router.push("/feed");
     }
   };

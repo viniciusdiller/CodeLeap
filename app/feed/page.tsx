@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
+import { PostForm } from "@/components/PostForm";
 
 export default function FeedPage() {
   const router = useRouter();
@@ -25,9 +26,11 @@ export default function FeedPage() {
         </header>
 
         <div className="p-6 flex flex-col gap-6">
-          <p className="text-gray-500 text-center mt-10">
-            Form and posts will go here shortly...
-          </p>
+          <PostForm
+            onSuccess={() =>
+              console.log("Post criado! Em breve recarregaremos a lista.")
+            }
+          />
         </div>
       </div>
     </main>
