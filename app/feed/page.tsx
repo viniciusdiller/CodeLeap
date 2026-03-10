@@ -11,8 +11,9 @@ import { DeletePostModal } from "@/components/DeletePostModal";
 import { EditPostModal } from "@/components/EditPostModal";
 import { api } from "@/lib/api";
 import { Post } from "@/types";
-import { LogOut } from "lucide-react";
+import { Loader2, LogOut } from "lucide-react";
 import { PostSkeleton } from "@/components/PostSkeleton";
+import { Button } from "@/components/ui/button";
 
 export default function FeedPage() {
   const router = useRouter();
