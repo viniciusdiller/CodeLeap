@@ -60,13 +60,12 @@ export function EditPostModal({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-125 rounded-2xl p-6">
+      <DialogContent className="sm:max-w-165 w-[95vw] rounded-2xl p-8 gap-6 md:p-10 flex flex-col justify-center min-h-62.2">
         <DialogHeader>
           <DialogTitle className="text-[22px] font-bold text-black mb-4">
             Edit item
           </DialogTitle>
         </DialogHeader>
-
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-2">
             <label htmlFor="edit-title" className="text-base text-black">

@@ -24,7 +24,7 @@ export function PostCard({ post, onDeleteClick, onEditClick }: PostCardProps) {
   });
 
   return (
-    <div className="w-full flex flex-col border border-[#999999] rounded-xl overflow-hidden shadow-none transition-all duration-300 hover:shadow-lg hover:border-[#7695EC]/50 animate-in fade-in slide-in-from-bottom-8 duration-500">
+    <div className="w-full flex flex-col border border-[#999999] rounded-xl overflow-hidden shadow-none transition-all duration-500 hover:shadow-lg hover:border-[#7695EC]/50 animate-in fade-in slide-in-from-bottom-8 ">
       <div className="bg-[#7695EC] p-6 flex items-center justify-between">
         <h2 className="text-[22px] font-bold text-white truncate pr-4">
           {post.title}
@@ -34,13 +34,13 @@ export function PostCard({ post, onDeleteClick, onEditClick }: PostCardProps) {
           <div className="flex items-center gap-6">
             <button
               onClick={() => onDeleteClick && onDeleteClick(post.id)}
-              className="text-white hover:opacity-80 transition-opacity"
+              className="text-white hover:opacity-80 transition-opacity hover:cursor-pointer"
             >
               <Trash2 size={24} />
             </button>
             <button
               onClick={() => onEditClick && onEditClick(post)}
-              className="text-white hover:opacity-80 transition-opacity"
+              className="text-white hover:opacity-80 transition-opacity hover:cursor-pointer"
             >
               <Edit size={24} />
             </button>

@@ -71,7 +71,6 @@ export default function FeedPage() {
     setIsEditModalOpen(true);
   };
 
-  // Prevent flashing the feed layout before validating the user session
   if (isCheckingSession) return null;
 
   return (
