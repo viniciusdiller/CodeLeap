@@ -50,7 +50,7 @@ export function PostForm({ onSuccess }: PostFormProps) {
     <Card className="border border-[#999999] rounded-xl shadow-none">
       <CardHeader className="p-6 pb-4">
         <CardTitle className="text-[22px] font-bold text-black">
-          What's on your mind?
+          What&apos;s on your mind?
         </CardTitle>
       </CardHeader>
       <CardContent className="p-6 pt-0">
