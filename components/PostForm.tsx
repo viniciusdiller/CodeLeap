@@ -10,6 +10,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { api } from "@/lib/api";
 import { toast } from "sonner";
+import confetti from "canvas-confetti";
 
 interface PostFormProps {
   onSuccess?: () => void;
@@ -42,6 +43,12 @@ export function PostForm({ onSuccess }: PostFormProps) {
       setContent("");
       if (onSuccess) onSuccess();
       toast.success("Post created successfully!");
+      confetti({
+        particleCount: 150,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ["#7695EC", "#ffffff", "#000000"],
+      });
     } catch (error) {
       console.error("Error creating post:", error);
       toast.error("Failed to create post.");

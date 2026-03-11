@@ -105,14 +105,17 @@ export function PostCard({ post, onDeleteClick, onEditClick }: PostCardProps) {
       </div>
 
       <div className="p-6 bg-white flex flex-col gap-4">
-        <div className="flex justify-between items-center text-[#777777] text-lg font-bold">
-          <span>@{post.username}</span>
+        <div className="flex justify-between items-center text-[#777777] text-lg font-bold mb-4">
+          <div className="flex items-center gap-3">
+            <img
+              src={`https://ui-avatars.com/api/?name=${post.username}&background=random&color=fff&rounded=true&bold=true`}
+              alt={`${post.username} avatar`}
+              className="w-8 h-8 rounded-full shadow-sm"
+            />
+            <span>@{post.username}</span>
+          </div>
           <span className="text-sm font-normal">{timeAgo}</span>
         </div>
-
-        <p className="text-black text-lg wrap-break-words whitespace-pre-wrap">
-          {post.content}
-        </p>
 
         <p className="text-black text-lg wrap-break-words whitespace-pre-wrap">
           {formatSmartText(post.content)}
