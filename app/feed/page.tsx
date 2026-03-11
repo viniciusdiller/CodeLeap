@@ -15,6 +15,7 @@ import { LogOut, Loader2, Search, ChevronUp } from "lucide-react";
 import { PostSkeleton } from "@/components/PostSkeleton";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { toast } from "sonner";
 
 export default function FeedPage() {
   const router = useRouter();
@@ -67,6 +68,7 @@ export default function FeedPage() {
       setHasMore(data.next !== null);
     } catch (error) {
       console.error("Error fetching posts:", error);
+      toast.error("Failed to load posts. Please try again.");
     } finally {
       setIsLoading(false);
     }
@@ -83,6 +85,7 @@ export default function FeedPage() {
       setHasMore(data.next !== null);
     } catch (error) {
       console.error("Error loading more posts:", error);
+      toast.error("Failed to load more posts. Please try again.");
     } finally {
       setIsLoadingMore(false);
     }
@@ -150,7 +153,7 @@ export default function FeedPage() {
             </div>
             <input
               type="text"
-              placeholder="Search posts by title or username..."
+              placeholder="Filter currently loaded posts..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full pl-10 pr-4 py-3 rounded-xl border border-[#999999] dark:border-zinc-700 dark:bg-zinc-800 dark:text-white dark:placeholder-zinc-400 focus:outline-none focus:ring-1 focus:ring-[#7695EC] transition-all"
@@ -176,7 +179,7 @@ export default function FeedPage() {
                 ))
               ) : (
                 <div className="text-center py-10 text-gray-500 font-medium">
-                  No posts found matching {searchTerm}
+                  No posts found matching your filter.
                 </div>
               )}
 
