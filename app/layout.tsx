@@ -12,8 +12,23 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "CodeLeap Network",
-  description: "Frontend Test for CodeLeap",
+  title: "CodeLeap Network | Social Feed",
+  description:
+    "A modern, interactive social feed platform built with Next.js, Redux, and Tailwind CSS. Join the conversation!",
+  keywords: ["CodeLeap", "Social Network", "Frontend Test", "Next.js", "React"],
+  openGraph: {
+    title: "CodeLeap Network | Join the Conversation",
+    description:
+      "A modern, interactive social feed platform built with Next.js, Redux, and Tailwind CSS.",
+    siteName: "CodeLeap Network",
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "CodeLeap Network",
+    description: "A modern, interactive social feed platform.",
+  },
 };
 
 export default function RootLayout({
