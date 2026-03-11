@@ -36,9 +36,3 @@ I took the "Surprise us :)" prompt seriously. Here are the extra features built 
 - **Graceful Loading States:** Beautiful Skeleton loaders during initial fetch and spinner feedback during API mutations.
 - **Responsive & Scalable:** Pixel-perfect adherence to the provided design, fully optimized from mobile to ultra-wide desktop displays (including global UI scaling).
 
-## 💻 Getting Started
-
-1. Clone the repository:
-   ```bash
-   git clone <your-repo-url>
-   ```
