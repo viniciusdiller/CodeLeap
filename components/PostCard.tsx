@@ -104,8 +104,8 @@ export function PostCard({ post, onDeleteClick, onEditClick }: PostCardProps) {
         )}
       </div>
 
-      <div className="p-6 bg-white flex flex-col gap-4">
-        <div className="flex justify-between items-center text-[#777777] text-lg font-bold mb-4">
+      <div className="p-6 bg-white dark:bg-zinc-800 flex flex-col gap-4 transition-colors duration-300">
+        <div className="flex justify-between items-center text-[#777777] dark:text-zinc-300 text-lg font-bold mb-4">
           <div className="flex items-center gap-3">
             <img
               src={`https://ui-avatars.com/api/?name=${post.username}&background=random&color=fff&rounded=true&bold=true`}
@@ -116,11 +116,9 @@ export function PostCard({ post, onDeleteClick, onEditClick }: PostCardProps) {
           </div>
           <span className="text-sm font-normal">{timeAgo}</span>
         </div>
-
-        <p className="text-black text-lg wrap-break-words whitespace-pre-wrap">
+        <p className="text-black dark:text-zinc-100 text-lg wrap-break-words whitespace-pre-wrap">
           {formatSmartText(post.content)}
         </p>
-
         <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-200">
           <div className="flex items-center gap-6">
             <button
@@ -150,7 +148,6 @@ export function PostCard({ post, onDeleteClick, onEditClick }: PostCardProps) {
             <Share2 size={22} />
           </button>
         </div>
-
         {isCommenting && (
           <form
             onSubmit={handleCommentSubmit}

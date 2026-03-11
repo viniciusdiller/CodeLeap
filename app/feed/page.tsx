@@ -14,6 +14,7 @@ import { Post } from "@/types";
 import { LogOut, Loader2, Search, ChevronUp } from "lucide-react";
 import { PostSkeleton } from "@/components/PostSkeleton";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 export default function FeedPage() {
   const router = useRouter();
@@ -125,19 +126,21 @@ export default function FeedPage() {
   );
 
   return (
-    <main className="min-h-screen bg-[#DDDDDD] flex justify-center transition-all">
-      <div className="w-full max-w-200 bg-white min-h-screen shadow-lg flex flex-col relative">
+    <main className="min-h-screen bg-[#DDDDDD] dark:bg-zinc-950 flex justify-center transition-all duration-300">
+      <div className="w-full max-w-200 bg-white dark:bg-zinc-900 min-h-screen shadow-lg flex flex-col relative transition-colors duration-300">
         <header className="bg-[#7695EC] text-white px-9 py-7 flex justify-between items-center">
           <h1 className="text-[22px] font-bold">CodeLeap Network</h1>
-          <button
-            onClick={handleLogout}
-            title="Logout"
-            className="hover:opacity-75 transition-opacity cursor-pointer p-2 rounded-full hover:bg-black/10"
-          >
-            <LogOut size={28} />
-          </button>
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+            <button
+              onClick={handleLogout}
+              title="Logout"
+              className="hover:opacity-75 transition-opacity cursor-pointer p-2 rounded-full hover:bg-black/10"
+            >
+              <LogOut size={28} />
+            </button>
+          </div>
         </header>
-
         <div className="p-6 flex flex-col gap-6">
           <PostForm onSuccess={fetchInitialPosts} />
 
@@ -150,7 +153,7 @@ export default function FeedPage() {
               placeholder="Search posts by title or username..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-3 rounded-xl border border-[#999999] focus:outline-none focus:ring-1 focus:ring-black transition-all"
+              className="w-full pl-10 pr-4 py-3 rounded-xl border border-[#999999] dark:border-zinc-700 dark:bg-zinc-800 dark:text-white dark:placeholder-zinc-400 focus:outline-none focus:ring-1 focus:ring-[#7695EC] transition-all"
             />
           </div>
 
@@ -162,7 +165,6 @@ export default function FeedPage() {
             </div>
           ) : (
             <div className="flex flex-col gap-6 pb-10">
-              {/* ATENÇÃO AQUI: Mudámos de posts.map para filteredPosts.map */}
               {filteredPosts.length > 0 ? (
                 filteredPosts.map((post) => (
                   <PostCard
@@ -200,14 +202,12 @@ export default function FeedPage() {
             </div>
           )}
         </div>
-
         <DeletePostModal
           isOpen={isDeleteModalOpen}
           onClose={() => setIsDeleteModalOpen(false)}
           postId={postToDelete}
           onSuccess={fetchInitialPosts}
         />
-
         <EditPostModal
           isOpen={isEditModalOpen}
           onClose={() => setIsEditModalOpen(false)}

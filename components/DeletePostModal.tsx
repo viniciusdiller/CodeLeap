@@ -45,9 +45,9 @@ export function DeletePostModal({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-165 w-[95vw] rounded-2xl p-8 gap-6 md:p-10 flex flex-col justify-center min-h-62.2">
+      <DialogContent className="sm:max-w-165 w-[95vw] rounded-2xl p-8 gap-6 md:p-10 flex flex-col justify-center min-h-62.2 dark:bg-zinc-800 dark:border-zinc-700 transition-colors duration-500 ease-in-out">
         <DialogHeader>
-          <DialogTitle className="text-[22px] font-bold text-black mb-6">
+          <DialogTitle className="text-[22px] font-bold text-black dark:text-zinc-100 mb-6 transition-colors duration-500">
             Are you sure you want to delete this item?
           </DialogTitle>
         </DialogHeader>
@@ -56,14 +56,14 @@ export function DeletePostModal({
             variant="outline"
             onClick={onClose}
             disabled={isLoading}
-            className="rounded-lg px-8 border-[#999999] text-black font-bold"
+            className="rounded-lg px-8 border-[#999999] text-black dark:border-zinc-600 dark:text-zinc-300 dark:hover:bg-zinc-700 dark:hover:text-zinc-100 font-bold transition-colors duration-500 cursor-pointer"
           >
             Cancel
           </Button>
           <Button
             onClick={handleDelete}
             disabled={isLoading}
-            className="rounded-lg px-8 bg-[#FF5151] hover:bg-[#FF5151]/90 text-white font-bold"
+            className="rounded-lg px-8 bg-[#FF5151] hover:bg-[#FF5151]/90 text-white font-bold transition-colors duration-500 cursor-pointer"
           >
             {isLoading ? "Deleting..." : "Delete"}
           </Button>

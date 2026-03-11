@@ -58,16 +58,19 @@ export function PostForm({ onSuccess }: PostFormProps) {
   };
 
   return (
-    <Card className="border border-[#999999] rounded-xl shadow-none">
+    <Card className="border border-[#999999] dark:border-zinc-700 dark:bg-zinc-800 rounded-xl shadow-none transition-colors duration-300">
       <CardHeader className="p-6 pb-4">
-        <CardTitle className="text-[22px] font-bold text-black">
+        <CardTitle className="text-[22px] font-bold text-black dark:text-zinc-100">
           What&apos;s on your mind?
         </CardTitle>
       </CardHeader>
       <CardContent className="p-6 pt-0">
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <div className="flex flex-col gap-2">
-            <label htmlFor="title" className="text-base text-black">
+            <label
+              htmlFor="title"
+              className="text-base text-black dark:text-zinc-300 font-medium"
+            >
               Title
             </label>
             <Input
@@ -75,12 +78,15 @@ export function PostForm({ onSuccess }: PostFormProps) {
               placeholder="Hello world"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="rounded-lg border-[#777777] focus-visible:ring-1 focus-visible:ring-black"
+              className="rounded-lg border-[#777777] dark:border-zinc-600 dark:bg-zinc-900 dark:text-white dark:placeholder-zinc-500 focus-visible:ring-1 focus-visible:ring-black dark:focus-visible:ring-[#7695EC] transition-colors"
             />
           </div>
 
           <div className="flex flex-col gap-2">
-            <label htmlFor="content" className="text-base text-black">
+            <label
+              htmlFor="content"
+              className="text-base text-black dark:text-zinc-300 font-medium"
+            >
               Content
             </label>
             <Textarea
@@ -88,7 +94,7 @@ export function PostForm({ onSuccess }: PostFormProps) {
               placeholder="Content here"
               value={content}
               onChange={(e) => setContent(e.target.value)}
-              className="rounded-lg border-[#777777] focus-visible:ring-1 focus-visible:ring-black min-h-20 resize-y"
+              className="rounded-lg border-[#777777] dark:border-zinc-600 dark:bg-zinc-900 dark:text-white dark:placeholder-zinc-500 focus-visible:ring-1 focus-visible:ring-black dark:focus-visible:ring-[#7695EC] min-h-20 resize-y transition-colors"
             />
           </div>
 
@@ -100,7 +106,8 @@ export function PostForm({ onSuccess }: PostFormProps) {
                          transition-all duration-200 ease-in-out cursor-pointer
                          hover:bg-[#7695EC]/90 hover:scale-[1.03] active:scale-95
                          disabled:bg-[#DDDDDD] disabled:text-black disabled:opacity-100 
-                         disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:bg-[#DDDDDD]"
+                         dark:disabled:bg-zinc-700 dark:disabled:text-zinc-400
+                         disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:bg-[#DDDDDD] dark:disabled:hover:bg-zinc-700"
             >
               {isLoading ? (
                 <Loader2 className="animate-spin" size={20} />
