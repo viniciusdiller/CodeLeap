@@ -42,7 +42,11 @@ export default function RootLayout({
         className={`${roboto.className} antialiased dark:bg-zinc-950 transition-colors duration-500`}
       >
         <StoreProvider>
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="light"
+            enableSystem={false}
+          >
             {children}
             <Toaster position="top-right" richColors />
           </ThemeProvider>

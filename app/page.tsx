@@ -25,10 +25,10 @@ export default function SignupPage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#DDDDDD] flex items-center justify-center p-4">
-      <Card className="w-full max-w-125 rounded-2xl border-0 shadow-lg p-2">
+    <main className="min-h-screen bg-[#DDDDDD] dark:bg-zinc-950 flex items-center justify-center p-4 transition-colors duration-500">
+      <Card className="w-full max-w-125 rounded-2xl border-0 shadow-lg p-2 dark:bg-zinc-800 transition-colors duration-500">
         <CardHeader>
-          <CardTitle className="text-[22px] font-bold text-black">
+          <CardTitle className="text-[22px] font-bold text-black dark:text-zinc-100 transition-colors duration-500">
             Welcome to CodeLeap network!
           </CardTitle>
         </CardHeader>
@@ -37,7 +37,7 @@ export default function SignupPage() {
             <div className="flex flex-col gap-2">
               <label
                 htmlFor="username"
-                className="text-sm font-medium text-black"
+                className="text-sm font-medium text-black dark:text-zinc-300 transition-colors duration-500"
               >
                 Please enter your username
               </label>
@@ -46,7 +46,7 @@ export default function SignupPage() {
                 placeholder="John doe"
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
-                className="rounded-lg border-gray-400 focus-visible:ring-1 focus-visible:ring-black"
+                className="rounded-lg border-gray-400 dark:border-zinc-600 dark:bg-zinc-900 dark:text-zinc-100 dark:placeholder-zinc-500 focus-visible:ring-1 focus-visible:ring-black dark:focus-visible:ring-[#7695EC] transition-colors duration-500"
               />
             </div>
 
@@ -54,7 +54,7 @@ export default function SignupPage() {
               <Button
                 type="submit"
                 disabled={isButtonDisabled}
-                className="bg-[#7695EC] hover:bg-[#7695EC]/90 text-white font-bold rounded-lg px-8 min-w-27.75"
+                className="bg-[#7695EC] hover:bg-[#7695EC]/90 text-white font-bold rounded-lg px-8 min-w-27.75 transition-all duration-300 disabled:bg-[#DDDDDD] disabled:text-black disabled:opacity-100 dark:disabled:bg-zinc-700 dark:disabled:text-zinc-400"
               >
                 ENTER
               </Button>
